@@ -1,5 +1,7 @@
 import numpy
 import re
+
+from scipy.stats import ttest_ind
 f = open('cleaned.csv').readlines()
 
 def average(lst):
@@ -49,6 +51,7 @@ for group in sorted(salariesPerGroup):
 	 	  str(numpy.std(salariesPerGroup[group])) + "\n\t" + "Num Datapoints: " +\
 	 	  str(len(salariesPerGroup[group])) + "\n"
 
+print 't-statistic = %6.3f pvalue = %6.4f' % ttest_ind(salariesPerGroup['Male'], salariesPerGroup['Female'])
 
 #Salaries as a funciton of full time status
 salariesPerGroup = {}
